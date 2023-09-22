@@ -14,3 +14,7 @@ all: emulator
 emulator:
 	mkdir -p $@/$(BIN_DIR)
 	make -C $@/
+
+.PHONY: clean
+clean:
+	rm -f $(shell find . -type f -name "*.o")
