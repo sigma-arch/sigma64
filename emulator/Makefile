@@ -5,9 +5,9 @@ override CFILES = $(shell find src/ -name "*.c")
 override CFLAGS = -pedantic $(INCLUDES)
 override OBJECTS = $(CFILES:.c=.o)
 
-.PHONY: all
-all: $(OBJECTS)
+bin/emul: $(OBJECTS)
+	gcc $(OBJECTS) -o $@
 
 %.o: %.c
 	$(PROMPT) " CC " $<
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) -c $(CFLAGS) $< -o $@
